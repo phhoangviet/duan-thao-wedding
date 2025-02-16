@@ -10,7 +10,7 @@ export const TitleCustom = ({ title, className }) => {
         </h2>
       </div>
       <div
-        className={`absolute -mt-6 -right-2 tracking-[0.2em] text-6xl font-bold text-white  lowercase ${League.className}`}
+        className={`absolute -mt-6 -right-2 tracking-[0.2em] text-6xl font-bold text-white opacity-40 lowercase ${League.className}`}
       >
         {title}
       </div>
