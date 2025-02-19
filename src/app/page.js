@@ -1,5 +1,6 @@
 "use client";
-import Image from "next/image";
+import { toast, Toaster } from "react-hot-toast";
+
 import {
   Albra,
   ArroemFont,
@@ -17,6 +18,8 @@ import CountdownTimer from "./components/CountdownTimer";
 import { comment } from "postcss";
 
 export default function Home() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     attendance: "",
@@ -27,21 +30,80 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    if (formData?.name == "") {
+      toast.error(`Vui lòng nhập tên của anh/chị ạ`, {
+        duration: 2000,
+        position: "top-right",
+      });
+      return;
+    }
+    if (formData?.attendance == "") {
+      toast.error(`Vui lòng chọn anh/chị có thể tham dự không ạ`, {
+        duration: 2000,
+        position: "top-right",
+      });
+      return;
+    }
+    if (formData?.numberJoined == "") {
+      toast.error(`Anh/chị sẽ đi mấy người ạ`, {
+        duration: 2000,
+        position: "top-right",
+      });
+      return;
+    }
+    try {
+      const res = await fetch("https://sheetdb.io/api/v1/1g0vtyoobl0h9", {
+        method: "POST",
+        body: JSON.stringify({
+          name: formData?.name,
+          numJoined: formData?.numberJoined,
+          isGoing: formData?.attendance == "yes" ? "1" : "0",
+          submitDate: new Date(),
+          note: formData?.comment,
+        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
 
-    await fetch("https://sheetdb.io/api/v1/1g0vtyoobl0h9", {
-      method: "POST",
-      body: JSON.stringify({
-        name: formData?.name,
-        numJoined: formData?.numberJoined,
-        isGoing: formData?.attendance == "yes" ? "1" : "0",
-        submitDate: new Date(),
-        note: formData?.comment,
-      }),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+      if (res.ok) {
+        toast.success(
+          `Cám ơn ${formData?.name} đã gửi lời chúc đến chúng em!`,
+          {
+            duration: 5000,
+            position: "top-right",
+            // Tùy chỉnh style
+            style: {
+              background: "#850f24",
+              color: "white",
+              padding: "16px",
+            },
+            icon: "👏",
+          }
+        );
+        e.target.reset();
+
+        setFormData({
+          name: "",
+          attendance: "",
+          dietary: "",
+          numberJoined: "",
+          comment: "",
+        });
+        window.scrollTo({ behavior: "smooth", top: window.screen.height * 7 });
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      toast.error(`Anh/chị vui lòng thử lại sau nhé.`, {
+        duration: 2000,
+        position: "top-right",
+      });
+      setIsSubmitting(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -53,6 +115,7 @@ export default function Home() {
   };
   return (
     <div className="bg-[#eae5d6]">
+      <Toaster />
       <div id="first_section" className="min-h-screen flex flex-col">
         <div id="information" className="relative font-light p-8 flex">
           <div
@@ -246,25 +309,27 @@ export default function Home() {
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <input
+                  id="yes1"
                   type="radio"
                   name="attendance"
                   value="yes"
                   onChange={handleChange}
                   className="h-4 w-4 border-gray-300 focus:ring-black"
                 />
-                <label className="text-sm font-light tracking-wide">
+                <label for="yes1" className="text-sm font-light tracking-wide">
                   Rất vui khi tham dự
                 </label>
               </div>
               <div className="flex items-center space-x-3">
                 <input
+                  id="yes2"
                   type="radio"
                   name="attendance"
                   value="no"
                   onChange={handleChange}
                   className="h-4 w-4 border-gray-300 focus:ring-black"
                 />
-                <label className="text-sm font-light tracking-wide">
+                <label for="yes2" className="text-sm font-light tracking-wide">
                   Rất tiếc
                 </label>
               </div>
@@ -295,6 +360,7 @@ export default function Home() {
           <div>
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full border text-[#850f24] border-[#850f24] py-4 px-4 text-sm font-light tracking-wide hover:bg-[#850f24] hover:text-white transition-colors duration-200 mt-4"
             >
               Xác nhận
