@@ -32,7 +32,7 @@ const ImageSlider = () => {
     "/images/DSC08259.jpg",
     "/images/DSC08466.jpg",
     "/images/DSC08577.jpg",
-    "/images/IMG_5133.jpg",
+    "/images/IMG_5133.JPG",
   ];
 
   const settings = {
