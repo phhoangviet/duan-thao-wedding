@@ -13,18 +13,10 @@ import {
 import React, { useState } from "react";
 import ImageSlider from "./components/ImageGalery";
 import { TitleCustom } from "./components/TitleCustom";
-import { Cloud, MessageCircle, PhoneCall } from "lucide-react";
 import CountdownTimer from "./components/CountdownTimer";
+import { comment } from "postcss";
 
 export default function Home() {
-  const images = [
-    "/images/template.jpg",
-    "/images/template.jpg",
-    "/images/template.jpg",
-    "/images/template.jpg",
-    "/images/template.jpg",
-    "/images/template.jpg",
-  ];
   const [formData, setFormData] = useState({
     name: "",
     attendance: "",
@@ -33,9 +25,23 @@ export default function Home() {
     comment: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    await fetch("https://sheetdb.io/api/v1/1g0vtyoobl0h9", {
+      method: "POST",
+      body: JSON.stringify({
+        name: formData?.name,
+        numJoined: formData?.numberJoined,
+        isGoing: formData?.attendance == "yes" ? "1" : "0",
+        submitDate: new Date(),
+        note: formData?.comment,
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   const handleChange = (e) => {
@@ -242,7 +248,7 @@ export default function Home() {
                 <input
                   type="radio"
                   name="attendance"
-                  value="happily_attend"
+                  value="yes"
                   onChange={handleChange}
                   className="h-4 w-4 border-gray-300 focus:ring-black"
                 />
@@ -254,7 +260,7 @@ export default function Home() {
                 <input
                   type="radio"
                   name="attendance"
-                  value="regretfully_decline"
+                  value="no"
                   onChange={handleChange}
                   className="h-4 w-4 border-gray-300 focus:ring-black"
                 />

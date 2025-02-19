@@ -32,6 +32,7 @@ const ImageSlider = () => {
     "/images/DSC08259.jpg",
     "/images/DSC08466.jpg",
     "/images/DSC08577.jpg",
+    "/images/IMG_5133.jpg",
   ];
 
   const settings = {
@@ -86,7 +87,7 @@ const ImageSlider = () => {
                 fill
                 className="object-cover shadow-lg"
                 sizes="(max-width: 768px) 100vw, (min-width: 1024px) 50vw, 33vw"
-                priority={index === 0}
+                priority
               />
             </div>
           </div>
