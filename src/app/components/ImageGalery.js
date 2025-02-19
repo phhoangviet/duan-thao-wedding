@@ -50,7 +50,7 @@ const ImageSlider = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1,
-          centerPadding: "20px",
+          centerPadding: "15px",
         },
       },
       {
@@ -64,15 +64,15 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="w-full  px-4">
+    <div className="w-full  p-4">
       {/* Add required styles inline */}
       <style jsx global>{`
         .slick-slide {
-          transform: scale(0.9);
+          transform: scale(0.7);
           transition: transform 0.3s ease;
         }
         .slick-center {
-          transform: scale(1);
+          transform: scale(0.8);
         }
       `}</style>
 
@@ -85,7 +85,7 @@ const ImageSlider = () => {
                 alt={`Gallery image ${index + 1}`}
                 fill
                 className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw,(max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (min-width: 1024px) 50vw, 33vw"
                 priority={index === 0}
               />
             </div>
