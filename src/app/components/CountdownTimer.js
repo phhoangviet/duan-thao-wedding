@@ -47,9 +47,9 @@ const CountdownTimer = () => {
   );
 
   return (
-    <div className="m-auto w-full mb-6 xl:max-w-[600px]">
+    <div className="absolute bottom-0 left-0 lg:left-[50%] lg:translate-x-[-50%] text-center w-full p-4 lg:max-w-[600px] m-auto">
       <div
-        className={`text-3xl text-center tracking-wide text-[#850f24] font-extrabold ${Victoshe.className} mb-6`}
+        className={`text-3xl text-center tracking-wide text-[#fff] bg-black/15 font-extrabold ${Victoshe.className} mb-6`}
       >
         <p className="tracking-[0.03em] mb-2">Counting down to the day</p>
         <p className="tracking-[0.03em]">We become a loving family</p>

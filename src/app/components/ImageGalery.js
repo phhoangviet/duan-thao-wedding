@@ -27,12 +27,11 @@ const ImageSlider = () => {
     </button>
   );
   const images = [
-    "/images/template.jpg",
-    "/images/template.jpg",
-    "/images/template.jpg",
-    "/images/template.jpg",
-    "/images/template.jpg",
-    "/images/template.jpg",
+    "/images/DSC01543.jpg",
+    "/images/DSC01942.jpg",
+    "/images/DSC08259.jpg",
+    "/images/DSC08466.jpg",
+    "/images/DSC08577.jpg",
   ];
 
   const settings = {
@@ -41,8 +40,9 @@ const ImageSlider = () => {
     infinite: true,
     centerPadding: "0px",
     slidesToShow: 3,
-    speed: 500,
+    speed: 300,
     dots: false,
+    autoplay: true,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
     responsive: [
@@ -72,7 +72,7 @@ const ImageSlider = () => {
           transition: transform 0.3s ease;
         }
         .slick-center {
-          transform: scale(0.8);
+          transform: scale(0.9);
         }
       `}</style>
 
@@ -84,7 +84,7 @@ const ImageSlider = () => {
                 src={src}
                 alt={`Gallery image ${index + 1}`}
                 fill
-                className="object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                className="object-cover shadow-lg"
                 sizes="(max-width: 768px) 100vw, (min-width: 1024px) 50vw, 33vw"
                 priority={index === 0}
               />

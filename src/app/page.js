@@ -138,6 +138,30 @@ export default function Home() {
           <p className="">đối với hai gia đình chúng tôi</p>
         </div>
       </div>
+      <div
+        id="six_section"
+        className="min-h-screen p-4 m-auto relative bg-[url(/images/DSC02172.jpg)]"
+        style={{
+          backgroundPositionX: "center",
+          backgroundPositionY: "20%",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <CountdownTimer />
+
+        {/* Image */}
+        {/* <div className="relative w-[80%] lg:w-full lg:max-w-[600px] aspect-[2/3] lg:aspect-[2/3] m-auto overflow-hidden">
+          <Image
+            src="/images/DSC02172.jpg"
+            alt="Dress code reference"
+            fill
+            className="object-contain rounded-3xl w-full"
+            // sizes="(max-width: 768px) 100vw, 400px; (min-width: 1024px) 80vw"
+            priority
+          />
+        </div> */}
+      </div>
       <div id="five_section" className="min-h-screen p-12  text-[#850f24]">
         <TitleCustom title={"Our Wedding"} className="text-center" />
         <div className={`max-w-md mx-auto px-6 py-4 ${Albra.className}`}>
@@ -177,22 +201,6 @@ export default function Home() {
             {/* Vertical line */}
             <div className="w-[1px] h-16 bg-[#850f24]/80 mx-auto"></div>
           </div>
-        </div>
-      </div>
-
-      <div id="six_section" className="min-h-screen p-4 m-auto ">
-        <CountdownTimer />
-
-        {/* Image */}
-        <div className="relative w-[80%] xl:w-full xl:max-w-[600px] aspect-[2/3] xl:aspect-[3/3] m-auto rounded-3xl overflow-hidden">
-          <Image
-            src="/images/template.jpg"
-            alt="Dress code reference"
-            fill
-            className="object-cover grayscale"
-            sizes="(max-width: 768px) 100vw, 400px; (min-width: 1024px) 80vw"
-            priority
-          />
         </div>
       </div>
 

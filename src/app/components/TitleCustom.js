@@ -6,7 +6,7 @@ export const TitleCustom = ({ title, className }) => {
     <div className={`relative ${className}`}>
       <div className="">
         <h2
-          className={` text-4xl lg:text-5xl xl:text-6xl tracking-[0.1em] ${Victoshe.className}`}
+          className={`font-bold text-4xl  lg:text-6xl tracking-[0.1em] ${Victoshe.className}`}
         >
           {title}
         </h2>
