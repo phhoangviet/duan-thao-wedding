@@ -116,7 +116,10 @@ export default function Home() {
   return (
     <div className="bg-[#eae5d6]">
       <Toaster />
-      <div id="first_section" className="min-h-screen flex flex-col">
+      <div
+        id="first_section"
+        className="relative lg:min-h-screen flex flex-col"
+      >
         <div id="information" className="relative font-light p-8 flex">
           <div
             className="flex items-baseline relative flex-col text-[#850f24] "
@@ -149,7 +152,7 @@ export default function Home() {
           className="flex-1 flex items-center justify-center"
         >
           <div
-            className={`flex flex-col tracking-[0.05em] items-center -mt-16 ${Maniefa.className} text-[#850f24]`}
+            className={`flex flex-col tracking-[0.05em] items-center mt-14 lg:-mt-16 ${Maniefa.className} text-[#850f24]`}
           >
             <h1 className="text-3xl md:text-4xl lg:text-6xl xl:text-8xl font-bold mb-6">
               PHAN TIEN DUAN
@@ -166,15 +169,18 @@ export default function Home() {
 
       <div
         id="third_section"
-        className="min-h-screen  p-1 flex items-center justify-center"
+        className="relative lg:min-h-screen p-0 flex items-center justify-center"
       >
         <ImageSlider />
       </div>
       <div
         id="seccond_section"
-        className="min-h-screen bg-[#850f24] rounded-3xl p-12 text-white flex items-center flex-col justify-center "
+        className="lg:min-h-screen bg-[#850f24] rounded-3xl p-12 text-white flex items-center flex-col justify-center "
       >
-        <div id="title_first" className="text-center mb-12 -mt-36 xl:-mt-12">
+        <div
+          id="title_first"
+          className="text-center mb-12 mt-0 lg:-mt-36 xl:-mt-12"
+        >
           <p
             className={`text-3xl lg:text-4xl xl:text-6xl ${Victoshe.className} mb-2 tracking-wide`}
           >
@@ -215,6 +221,7 @@ export default function Home() {
           backgroundPositionY: "20%",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          opacity: 0.95,
         }}
       >
         <CountdownTimer />
@@ -231,7 +238,7 @@ export default function Home() {
           />
         </div> */}
       </div>
-      <div id="five_section" className="min-h-screen p-12  text-[#850f24]">
+      <div id="five_section" className="lg:min-h-screen p-12  text-[#850f24]">
         <TitleCustom title={"Our Wedding"} className="text-center" />
         <div className={`max-w-md mx-auto px-6 py-4 ${Albra.className}`}>
           {/* Timeline content */}
